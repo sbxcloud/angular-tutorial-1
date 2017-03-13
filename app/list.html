@@ -1,0 +1,63 @@
+<div ui-view="list">
+    <div class="panel panel-info">
+        <div class="panel-heading">Ingresar un libro</div>
+        <div class="panel-body">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control input-sm" ng-model="list.nombre">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Autor</label>
+                    <input type="text" class="form-control input-sm" ng-model="list.autor">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Editorial</label>
+                    <select class="form-control input-sm" ng-model="list.editorial" ng-options="item.nombre for item in list.editoriales track by item._KEY"></select>
+
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <button class="btn btn-sm btn-info" ng-click="list.agregarLibro()">Ingresar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+           Listado de libros
+        </div>
+        <div class="panel-body">
+             <div class="pull-right form-group">
+                <input type="text" class="form-control input-sm" placeholder="Filtrar" ng-model="list.filtro">
+            </div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Autor</th>
+                        <th>Editorial</th> 
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="libro in list.array | filter: list.filtro">
+                        <td>{{libro.nombre}}</td>
+                        <td>{{libro.autor}}</td>
+                        <td>{{libro.editorial.nombre}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-xs btn-danger" ng-disabled="libro.prestado">
+                                <span ng-if="!libro.prestado">Prestar</span>
+                                <span ng-if="libro.prestado">Prestado</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
