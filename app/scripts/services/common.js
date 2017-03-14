@@ -7,8 +7,8 @@
 
         const fac = {};
 
-        fac.domain = 148; // dominio de SBX
-        fac.app_key = '9458a46b-c7f0-4156-aceb-184070e4d0c3'; // llave de la aplicacion creada para usar la plataforma SBX
+        fac.domain = {{dominio}}; // dominio de SBX
+        fac.app_key = '{{app-key}}'; // llave de la aplicacion creada para usar la plataforma SBX
         fac.urls = {
             api: 'https://sbxcloud.com/api',
             login: '/user/v1/login',
@@ -19,7 +19,7 @@
         };
 
         fac.headers = {
-            "Authorization": "Bearer 1183d6be-8b10-4cad-9cde-61e5754aec48", // token de seguridad del usuario retornado en el servicio de login de la paltaforma SBX
+            "Authorization": "Bearer {{token}}", // token de seguridad del usuario retornado en el servicio de login de la paltaforma SBX
             "App-Key": fac.app_key
         }
 
